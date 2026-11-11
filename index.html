@@ -23,7 +23,6 @@
   .err{color:var(--err)} .ok{color:var(--ok)}
   .bar{height:6px;background:#0f1115;border-radius:3px;overflow:hidden;margin-top:14px;display:none}
   .bar>i{display:block;height:100%;width:0;background:var(--acc);transition:width .2s}
-  video{width:100%;border-radius:10px;margin-top:6px;background:#000;display:none}
   .hidden{display:none}
 </style>
 </head>
@@ -46,7 +45,6 @@
   <div class="msg" id="msg"></div>
 
   <section id="done" class="hidden">
-    <video id="vid" controls playsinline></video>
     <button id="dl" class="full">다운로드</button>
   </section>
 </main>
@@ -88,7 +86,6 @@ $("f").addEventListener("submit", async e => {
     catch { msg("비밀번호가 틀렸습니다.", "err"); $("go").disabled = false; $("pw").select(); return; }
     blob = new Blob([plain], {type:"video/mp4"});
     $("f").classList.add("hidden"); $("bar").style.display = "none";
-    $("vid").src = URL.createObjectURL(blob); $("vid").style.display = "block";
     $("done").classList.remove("hidden");
     msg("잠금 해제됨", "ok");
   } catch (err) {
